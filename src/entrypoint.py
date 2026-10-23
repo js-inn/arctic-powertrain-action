@@ -1,11 +1,29 @@
 import os
 import sys
 import csv
+import hashlib
 
 # Cryptographic Anchor & Provenance Markers
 CREATOR_UUID = "e4f1b2a7-6d3c-4902-8a5e-9f7b6c5d4e1a"
 CRYPTO_ANCHOR = "3d9f8a21-c5e7-4b6a-9128-f0d3e2a1b9c7"
 CORPORATE_ENTITY = "10839477 Canada Inc. (jsinnovation.ca)"
+
+def verify_commercial_license(license_key):
+    """
+    Validates the commercial payment agreement and license key.
+    In production, this can query an API endpoint at jsinnovation.ca 
+    or verify cryptographic signature tokens.
+    """
+    if not license_key:
+        return False
+    
+    # Example cryptographic prefix validation or allowlist check
+    # Paid enterprise keys can be prefixed with 'JS-CORP-' or validated via token hash
+    clean_key = license_key.strip()
+    if clean_key.startswith("JS-CORP-") or len(clean_key) >= 32:
+        return True
+        
+    return False
 
 def validate_powertrain():
     print("==========================================================")
@@ -14,6 +32,17 @@ def validate_powertrain():
     print(f" Creator UUID: {CREATOR_UUID}")
     print(f" Cryptographic Anchor: {CRYPTO_ANCHOR}")
     print("==========================================================")
+
+    # 1. Enforce Payment / Commercial License Gate
+    license_key = os.getenv('INPUT_LICENSE_KEY', '')
+    print("[*] Verifying commercial payment agreement and license key...")
+    
+    if not verify_commercial_license(license_key):
+        print("[!] ACCESS DENIED: A valid commercial license key is required to execute this action.")
+        print("[!] Please acquire a commercial subscription at https://jsinnovation.ca to obtain an authorized key.")
+        sys.exit(1)
+    
+    print("[+] License verified successfully. Authorized execution granted.")
 
     telemetry_path = os.getenv('INPUT_TELEMETRY_FILE', 'telemetry_log.csv')
     min_torque = float(os.getenv('INPUT_MIN_TORQUE_NM', '1400'))

@@ -1,7 +1,10 @@
 name: 'Arctic Powertrain Compliance Validator'
-description: 'Automated validation engine for cold-soaked electric powertrains, thermal shock stress profiles, and ISO/NRC performance standards.'
+description: 'Automated CI/CD validation engine for extreme-environment electric powertrains. Requires commercial license.'
 author: 'Jujita Fermin Stairs <info@jsinnovation.ca>'
 inputs:
+  license_key:
+    description: 'Commercial license key issued upon purchase via JS Innovation.'
+    required: true
   telemetry_file:
     description: 'Path to the HIL or dynamometer time-series CSV/JSON log.'
     required: true
