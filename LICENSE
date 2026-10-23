@@ -1,0 +1,15 @@
+PROPRIETARY SOURCE-AVAILABLE & INTELLECTUAL PROPERTY LICENSE
+==============================================================
+
+Copyright (c) 2026 10839477 Canada Inc. (Operating as JS Innovation). All Rights Reserved.
+
+DIGITAL PROVENANCE MARKERS:
+- Creator UUID: e4f1b2a7-6d3c-4902-8a5e-9f7b6c5d4e1a
+- Cryptographic Anchor: 3d9f8a21-c5e7-4b6a-9128-f0d3e2a1b9c7
+- Author / Individual with Significant Control: Jujita Fermin Stairs
+- Jurisdiction: Edmonton, Alberta, Canada
+
+TERMS & CONDITIONS:
+1. PERMISSION TO EXECUTE: Users and automated CI/CD pipelines (including GitHub Actions workflows) are granted a non-exclusive, non-transferable right to execute this software strictly for its intended validation and compliance testing purposes.
+2. RESTRICTION ON REVERSE ENGINEERING: Unauthorized modification, decompilation, reverse engineering, extraction of core algorithmic logic, or commercial resale of this codebase without explicit written authorization from 10839477 Canada Inc. is strictly prohibited.
+3. IMMUTABILITY: Any derivative work or integration must retain this cryptographic anchor, creator UUID, and copyright notice intact.
