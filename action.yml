@@ -1,0 +1,24 @@
+name: 'Arctic Powertrain Compliance Validator'
+description: 'Automated validation engine for cold-soaked electric powertrains, thermal shock stress profiles, and ISO/NRC performance standards.'
+author: 'Jujita Fermin Stairs <info@jsinnovation.ca>'
+inputs:
+  telemetry_file:
+    description: 'Path to the HIL or dynamometer time-series CSV/JSON log.'
+    required: true
+    default: 'telemetry_log.csv'
+  min_torque_nm:
+    description: 'Minimum sustained takeoff torque threshold (Nm).'
+    required: false
+    default: '1400'
+  min_efficiency:
+    description: 'Minimum combined system efficiency threshold (fraction).'
+    required: false
+    default: '0.93'
+outputs:
+  compliance_status:
+    description: 'Pass or Fail status based on the validation matrix.'
+  audit_report:
+    description: 'Generated cryptographic audit summary.'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
